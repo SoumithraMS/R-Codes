@@ -1,0 +1,139 @@
+#1.creating basic functions in R
+
+deck<- c("Duke", "Assassin", "Captain", "Ambassodor", "Contessa")
+print(deck)
+sample(deck,3)
+hand<- sample(deck,3, replace=TRUE)
+hand
+#creting a function todraw cards with the possibility of repetition
+draw<- function(){
+  deck<- c("Duke", "Assassin", "Captain", "Ambassodor", "Contessa")
+  hand<- sample(deck,3, replace=TRUE)
+  print(hand)
+}
+draw()
+
+# creating a function to flip a coin
+flip<- function(){
+  coin<-c("heads","tails")
+  throw<- sample(coin,100,replace=TRUE )
+  print(throw)
+}
+flip()
+
+#2. vectors and vector operations
+# adding names to vectors
+age<-c (23, 26,24,26)
+attributes(age)
+names(age)
+names(age)<- c("George", "Thomas", "Paul", "Lucas")
+names(age)
+attributes(age)
+#how to remove names?
+names(age)<-NULL
+names(age)
+#Finding help on R
+#If you don't know the name of a function, search by keywords with two question marks
+??join
+#3.Indexing and slicing a vector
+deck<- c("Thomas","Jain","Viktor","Stella", "philip","Stanley")
+deck[4]
+#This will return the 4th value from the vector deck which is "Stella".
+# This method is known as indexing.You have to be careful about adding the square brackets.
+#if you want to select everything else except the 4th element you type:
+deck[-4]
+deck[c(1,2,3,4)]
+# if a vector's elements has names, then the names can be called to index a particualr element from that vector
+n.deck<- c(1,2,3,4,5,6)
+names(n.deck)<- deck
+attributes(n.deck)
+n.deck["philip"]
+#This will return the number 5
+#you want to call multiple numbers
+n.deck[c("Thomas","Jain","Viktor","Stella")]
+#this will return numbers 123and4
+#Slicing a vector
+n.deck[3:5]
+n.deck[-(3:5)]
+n.deck["philip"]
+n.deck[n.deck>2]
+#changing the dimensions of an object in R
+a<- seq(10,120,by=10)
+dim(a)<- c(3,4)
+print(a)
+#4.Matrices
+mtrx<-matrix(1:20, nrow=2)
+print(mtrx)
+
+dat1<-c(1,2,3,4,5,6,7,8,9,10)
+dat2<- c("apple","orang","pear","grapes","cherry","bluberry","mango","rambutan","apricots","strawberries")
+dat3<-cbind(dat1,dat2)
+print(dat3)
+#addingrow names
+rownames(dat3)<- c(2011,2012,2013,2014,2015,2016,2017,2018,2019,2020)
+dat3
+#adding coloumn names
+colnames(dat3)<- c("Numbers", "Fruits")
+dat3
+#transposing the data
+dat<- t(dat3)
+dat
+#adding another row
+Veg<- c("cucumber","carrot", "brinjal","lady's_finger","tomatoes","pumpkin","bittergourd","capsicum","chillies","coriander")
+dat<- rbind(dat, Veg)
+dat
+#creating a matrix in a single line of code
+gdp<- matrix(c(1,2,3,4,5,6,7,8,9),nrow= 3, byrow=TRUE, dimnames=(list(c(211,212,213),c("year", "year","ÿear"))))
+gdp
+#Subsetting values in matrix
+htp<-matrix(1:10, nrow=2)
+htp
+htp[2,3] #returns the value from 2nd row third coloumn.
+htp[2,]# This will return the entire second row
+htp[,2]# this will return the entire second coloumn
+htp[2]# retuens the second value
+#slicing values in matrix
+htp[c(1,2),]#returns all the values from 1 and 2nd rows
+htp[,c(1,2,3)]#returns values from the 1,2and 3rd coloumns
+htp[c(1,2), c(2,3)]# returns values intersecting the rows and coloms
+
+#Matrix arithmetic
+b.matrix<- c(1,2,3,4,5,6)
+MAT<- matrix(b.matrix, nrow=3, byrow=T,dimnames=list(c("Matrix1","Matrix2", "Matrix3"), c("US", "worldwide"))) 
+MAT
+MAT.S<- MAT*2
+MAT.S # here the matrix MAT have been multiplied by 2 element by element
+#matrix by matrix arithmetic
+MAT1<-matrix(c(1,2,3,4,5,6), nrow=3,ncol=2)
+MAT1
+MATB<- MAT-MAT1
+MATB
+#finding the sum and mean of coloumns and rows in matrix
+a<-colSums(MAT)
+a
+b<-colMeans(MAT)
+b
+rowSums(MAT)
+rowMeans(MAT)
+#rbinding the colsums and rowmeans to the main matrix MAT
+MATA<- rbind(MAT,a,b)
+MATA
+
+#creating factor variables
+maritalstatus<- c("Divorced","widowed","Single","Married","Married")
+str(maritalstatus)
+typeof(maritalstatus)
+#converting the variable to factor
+maritalfactor<-factor(maritalstatus)
+str(maritalfactor)
+#specifying the levels
+marital<- factor(maritalstatus, levels= c("Widowed","Divorced","Single","Married"))
+str(marital)
+#chnaging the names of levels
+levels(marital)=c("w","d","s","m")
+str(marital)
+#of ordering and labelling the variables. As per the order in 'levels', the levels will be ordered within the factor variable
+marital<- factor(maritalstatus, ordered= T,levels= c("Widowed","Divorced","Single","Married"), labels=c("wid","di","sin","marri"))
+str(marital)
+marital
+
