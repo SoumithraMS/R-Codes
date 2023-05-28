@@ -1,0 +1,55 @@
+#writing an if statemnet
+num<- if(num<0){
+  num<- num*-1
+  print(num)
+}
+
+num<- -19
+
+#writing an if else statement
+
+V<-35
+V<-0
+V<- -3
+if (V<0){
+  print("V is less than 0")
+  print("But Im making it positive")
+  V= V*-1
+  print("Here look")
+  print(V)
+}else if(V==0){
+  print("v is exactly zero")
+} else if((V>0)&(V<12)){
+  print("V is positive but less than 12")
+} else{
+  print("v is greater than 12")
+    print(V)
+  }
+
+#For loops
+
+title<- c("I", "love", "apples")
+for (i in title){
+  print(i)
+}
+#when input is a vector
+for (temp in c (0, -4, -2, 4,5, 6,-12,-4)){
+  if(temp==0){
+    print("neutral")
+  } else if(temp>0){
+    print("warm")
+  }else{
+    print("cold")
+  }
+}
+
+#function to draw shuffled elements
+coup<- matrix(rep(c("tom", "shelby", "tina","mariam"),5),ncol=1)
+coup
+draw<- function(deck){
+  sample<-sample(1:20,size=20)
+  deal<- deck[sample]
+  print(deal)
+}
+draw(deck=coup)
+  
