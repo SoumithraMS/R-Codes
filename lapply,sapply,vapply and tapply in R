@@ -1,0 +1,45 @@
+# lapply and sapply
+head(flags)
+dim(flags)
+View(flags)
+# finding the class of each coloumn
+class<- lapply(flags,class)
+# creating a more compact version of the same
+as.charcter(cls_list)
+#using sapply
+cls_vect<-sapply(flags,class)
+#finding the total number of countries with each color on their flags
+flag_colors<- flags[, 11:17]
+head(flag_colors)
+sapply(flag_colors,sum)
+#finding the mean number of countries with each color on their flag
+sapply(flag_colors,mean)
+#finding the maximum and minimum number of times a shape appears on each of the country's flags
+shape_mat<-sapply(flag_shapes, range)
+shape_mat
+class(shape_mat)
+# finding the unique value in each variable of the dataset flags
+unique_vals<- lapply(flags, unique)
+print(unique_vals)
+#determining the length of each lement of unique_vals
+sapply(unique_vals, length)
+sapply(unique_vals)
+# determing the unique values in each coloumn
+sapply(flags, unique)
+# looking at just the second element of each coloumn in unique value vector
+lapply(unique_vals, function(elem) {elem[2]})
+
+#vapply and tapply
+vapply(flags, class, character(1))
+
+# findng the mean of animate variable to each of the 6 landmass groups for the countries
+tapply(flags$animate, flags$landmass, mean) 
+
+#finding the summary of population for countries with color red on their flags
+tapply(flags$population, flags$red, summary)
+
+#findidng the median population of countries without the color red on their flag
+3
+
+#finding the population summary for each of the 6 landmasses
+tapply(flags$population,flags$landmass,summary)
