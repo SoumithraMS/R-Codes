@@ -1,0 +1,13 @@
+# Linear Regression Models
+
+View(galton)
+plot(child~parent,galton)
+
+plot(jitter(child,4) ~ parent,galton)
+
+#regressing children's height against parents
+regrline <- lm(child ~ parent, galton)
+summary(regrline)
+#adding resgression line to the plot
+abline(regrline, lwd=3, col='red')
+
